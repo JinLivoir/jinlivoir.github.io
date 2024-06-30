@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="/index.css">
+
+    <style>
+        details[open] ul {
+            animation: expand ease-in-out .4s;
+        }
+    
+        @keyframes expand {
+            0% {
+                height: 0px;
+            }
+
+            100% {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p class="dummy">JinLivoir<div class="dummy">Jin Livoir</div><div class="dummy">Jinlivoir</div></p>
+
+    <noscript>
+        <style>
+            .body { display: none }
+            .error { color: #efa08f }
+            .errortext { color: #f4cbcb }
+        </style>
+        <div class="noscript">
+            <p class="bold error">Ошибка!</p>
+            <p class="offset d b errortext">Похоже, что-бы просматривать данную страницу вам нужно включить JavaScript в браузере!</p>
+            <div class="noscript">
+                <p class="bold">Google Chrome</p>
+                <p class="offset d b">Для включения JavaScript в Google Chrome вам нужно нажать F12, далее нажать на шестерёнку, в Preferences найти настройку Disable JavaScript и убрать галочку!</p>
+                <p class="bold">Microsoft Edge</p>
+                <p class="offset d b">Включить JavaScript в Microsoft Edge тоже можно, нажмите F12, далее перейдите на вкладку Debugger, и найдите там Debugger Settings, уберите галочку с параметра Disable JavaScript!</p>
+                <p class="bold">Mozilla FireFox</p>
+                <p>Также в Firefox или Mozilla можно включить при помощи нажатия F12, потом перехода в Debugger, нажав на шестеренку, и отключив галочку Disable JavaScript!</p>
+            </div>
+        </div>
+    </noscript>
+
+    <img class="menu" id="menubtn" onclick="menu()">
+    <div id="divmenu" closed>
+        <p class="bold offset d">Меню</p>
+        <button class="menu" onclick="page(1)">Начальная страница</button>
+        <p class="offset l"></p>
+        <button class="menu" onclick="page(2)">Программы</button>
+        <button class="menu" onclick="page(3)">Magisk</button>
+        <button class="menu" onclick="page(4)">Утилиты</button>
+        <p class="offset b"></p>
+        <button class="menu" onclick="page(5)">Обои для ПК</button>
+        <button class="menu" onclick="page(6)">Wallpaper Engine</button>
+        <button class="menu" onclick="page(7)">Обои для телефона</button>
+        <button class="menu" onclick="page(8)">Персонализация</button>
+    </div>
+
+    <div class="space"></div>
+
+    <div class="vignette" id="vignette"></div>
+
+    <div class="body page" id="page1">
+        <p class="bold">О данном сайте</p>
+        <p class="offset d b">Приветствую на главной стринице моего проекта, тут ничего нет, но, ты можешь перейти на другие страницы по панели сверху, она двигается в лево и право.</p>
+
+        <p class="bold">Об авторе</p>
+        <p class="offset d b">Acelotick (AceXDevl), начинающий программист, которого знает уже не мало людей, но популярности это-го не дало.</p>
+
+        <p class="bold"><a href="https://t.me/acelotick">Телеграм</a> <a href="https://vk.com/vitaliikarpov">ВКонтакте</a></p>
+        <p>Тут ты можешь написать мне в личные сообщения</p>
+    </div>
+    
+    <div class="body page" id="page2">
+        программы
+    </div>
+    
+    <div class="body page" id="page3">
+        magisk
+    </div>
+    
+    <div class="body page" id="page4">
+        утилиты
+    </div>
+    
+    <div class="body page" id="page5">
+        обои для пк
+    </div>
+    
+    <div class="body page" id="page6">
+        валпапер енжин
+    </div>
+    
+    <div class="body page" id="page7">
+        обои на телефон
+    </div>
+    
+    <div class="body page" id="page8">
+        персонализация
+    </div>
+
+    <script>
+        let id = id => document.getElementById(id);
+
+        //menu
+        let time = 0
+        let menu = () => {if (time > Date.now()) return;time = Date.now() + 850;if (id('divmenu').hasAttribute('closed')) id('divmenu').removeAttribute('closed');id('vignette').toggleAttribute('used');id('divmenu').toggleAttribute('opened');};
+        let close_menu = () => {id('divmenu').removeAttribute('opened');id('vignette').removeAttribute('used');};
+        document.addEventListener('click', (ev => {if (!id('divmenu').contains(ev.target) && !id('menubtn').contains(ev.target)) {close_menu()}}));
+
+        //pages
+        let lastpage = 'page1'
+        let pagetime = 0
+
+        let page = num => {
+            if (lastpage == `page${num}` || pagetime > Date.now()) return;
+            pagetime = Date.now + 500;
+            let now = id(`page${num}`);
+            now.style.display = 'block';
+            now.style.opacity = '1';
+            let last = id(lastpage);
+            last.style.opacity = '0';
+            setTimeout(() => {last.style.display = 'none'}, 500);
+            lastpage = `page${num}`;
+            
+            close_menu()
+        }
+
+        //site forward
+        if (!document.location.search.split('?')[1]) document.location.href = '?main';
+        let r = document.location.search.split('?')[1];
+        let pages = [
+            {
+                '1': 'main',
+                '2': 'programs',
+                '3': 'magisk',
+                '4': 'utilityes',
+                '5': 'wallpapersforpc',
+                '6': 'wallpaperengine',
+                '7': 'wallpapersformobile',
+                '8': 'personalization'
+            }, {}
+        ]
+        for (d in pages[0]) {pages[1][pages[0][d]] = d}
+        if (r in pages[1]) page(pages[1][r])
+    </script>
+</body>
+</html>

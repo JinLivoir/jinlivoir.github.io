@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Начало загрузки</title>
+</head>
+<body>
+    <div class="body">
+        <p class="bold">Загрузка</p>
+        <p>Через <a class="counter"></a> будет скачан файл <a class="file"></a></p>
+        <p>Если загрузка не началась автоматически, то нажмите <button class="download">Скачать</button></p>
+    </div>
+    <script>
+        let download = file => {
+            id('downloading').textContent = 'В данный момент началось скачивание.';
+            let a = document.createElement('a');
+            a.href = './files/' + file;
+            a.download = file;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a); 
+        };
+    
+        let s = document.location.search.split('?');
+    
+        let counter = 5;
+    
+        let id = id => document.getElementById(id);
+    
+        id('counter').textContent = counter;
+        id('desc').textContent = s[2];
+        id('file').textContent = s[1];
+        id('lenk').href = s[3]
+    
+        let time = setInterval(() => {
+            if (counter < 0.1) {
+                clearInterval(time);
+                return download(s[1]);
+            };
+    
+            counter -= 0.1;
+    
+            id('counter').textContent = counter;
+        }, 100);
+    
+        let try_ = () => {
+            if (counter < 0.1) download(s[1]);
+        };
+    </script>
+</body>
+</html>
