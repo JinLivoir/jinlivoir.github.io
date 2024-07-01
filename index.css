@@ -55,7 +55,7 @@ html {
 }
 
 .space {
-    padding: 30px
+    padding: 30px;
 }
 
 .maintext {
@@ -210,6 +210,76 @@ li {
     padding-bottom: 4px;
 }
 
+img.detail {
+    width: 40px;
+    position: absolute;
+    margin: 10px;
+    content: url('/assets/cancel-light.svg');
+    background: #fff3;
+    border-radius: 10px;
+    transition: all ease-in-out .1s;
+}
+
+img.detail:hover {
+    background: #fff4;
+}
+
+img.detail:active {
+    background: #fff5;
+}
+
+div.detail {
+    position: fixed;
+    z-index: 6;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    background: #333;
+    margin: 20px;
+    margin-top: -40px;
+    border: 3px solid #fff;
+    border-radius: 20px;
+    opacity: 0.975;
+    transition: all .9s ease-in;
+}
+
+div.detailcont {
+    padding: 20px;
+}
+
+div.detailiframecont {
+    margin-top: 2px;
+    height: calc(99% - 4px);
+    padding: 5px;
+    padding-right: 6px;
+}
+
+iframe.detailframe {
+    border-radius: 18px 17px 17px 18px;
+}
+
+div.detail[opened] {
+    animation: detail-show .7s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+div.detail:not([opened]):not([closed]) {
+    animation: detail-hide .7s ease-in-out forwards;
+}
+
+div.detail:not([opened])[closed] {
+    opacity: 0;
+    display: none;
+}
+
+@keyframes detail-show {
+    0% { left: 100%; opacity: 0; display: none; }
+    100% { left: 0px; opacity: 1; }
+}
+
+@keyframes detail-hide {
+    0% { left: 0px; opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
 .page {
     transition: all .5s ease-in-out;
     opacity: 0;
@@ -230,6 +300,16 @@ button.menu {
     padding: 8px;
     border-radius: 7px;
     border: 1px solid #fff2;
+    transition: all .1s ease-in-out;
+    color: #fbf1d0
+}
+
+button.menu:hover {
+    background: #0003;
+}
+
+button.menu:active {
+    background: #0005;
 }
 
 img.menu {
@@ -270,10 +350,6 @@ img.menu {
     direction: rtl;
     unicode-bidi: bidi-override;
     z-index: 5;
-}
-
-#divmenu::-webkit-scrollbar-button {
-    border-radius: 20px;
 }
 
 #divmenu[opened] {
@@ -343,13 +419,39 @@ details:not([open]) {
 }
 
 @media (prefers-color-scheme: light) {
+    button.menu {
+        color: #333
+    }
+
+    #divmenu {
+        background: #bfbfbf;
+    }
+
     img.menu {
         content: url('/assets/menu-black.svg');
+    }
+
+    img.detail {
+        content: url('/assets/cancel-black.svg');
+        background: #0003;
+    }
+
+    img.detail:hover {
+        background: #0004;
+    }
+    
+    img.detail:active {
+        background: #0005;
+    }
+
+    div.detail {
+        border: none
     }
 
     button.download.detail {
         color: #111
     }
+
     button.download.detail:hover {
         background: #67675a37;
         color: #141414;
