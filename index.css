@@ -324,7 +324,7 @@ img.menu {
     position: fixed;
     z-index: 4;
     transition: all .9s ease-in-out;
-    pointer-events:;
+    pointer-events: none;
     opacity: 0;
 }
 
