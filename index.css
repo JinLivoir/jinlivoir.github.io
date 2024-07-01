@@ -46,10 +46,6 @@ html {
     display: none;
 }
 
-.main::-webkit-scrollbar {
-    display: none;
-}
-
 .dummy {
     display: none;
 }
@@ -328,7 +324,7 @@ img.menu {
     position: fixed;
     z-index: 4;
     transition: all .9s ease-in-out;
-    pointer-events: none;
+    pointer-events:;
     opacity: 0;
 }
 
@@ -341,7 +337,7 @@ img.menu {
     border-radius: 0 30px 30px 0;
     width: 250px;
     padding: 20px;
-    height: 75vh;
+    height: 50vh;
     background: #3b3b3b;
     transition: all .9s ease-in;
     margin: 30px;
@@ -353,11 +349,11 @@ img.menu {
 }
 
 #divmenu[opened] {
-    animation: menu-expand-up .7s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    animation: menu-expand-up .3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 }
 
 #divmenu:not([opened]):not([closed]) {
-    animation: menu-expand-down .7s ease-in-out forwards;
+    animation: menu-expand-down .3s ease-in-out forwards;
 }
 
 #divmenu:not([opened])[closed] {
