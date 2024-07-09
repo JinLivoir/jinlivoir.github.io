@@ -61,7 +61,7 @@
         <button class="menu leftt" onclick="page(7)">Персонализация</button>
     </div>
 
-    <div class="vignette" id="vignette"></div>
+    <div class="vignette" id="vignette">sex</div>
 
     <div class="detail" id="detailtest" closed>
         <img class="detail" onclick="close_details()">
@@ -279,6 +279,14 @@
                 lastpage=`page${num}`;
                 close_menu();
             }
+
+        /*forwarding*/
+        if(!document.location.search.split('?')[1])document.location.href='?main';
+        let r=document.location.search.split('?')[1];
+        for(d in pages[0]){
+            pages[1][pages[0][d]]=d
+        };
+        if(r in pages[1])page(pages[1][r]);
         /*menus*/
         let menuopened=0;
         let detail=name=>{
@@ -302,13 +310,6 @@
                 id('vignette').removeAttribute('used');
                 anypageopened=false;
             }
-        /*forwarding*/
-        if(!document.location.search.split('?')[1])document.location.href='?main';
-        let r=document.location.search.split('?')[1];
-        for(d in pages[0]){
-            pages[1][pages[0][d]]=d
-        };
-        if(r in pages[1])page(pages[1][r]);
         /*trigger closing*/
         document.addEventListener('click',(ev=>{
             let success=false;

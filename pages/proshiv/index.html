@@ -12,17 +12,26 @@
         <link rel="stylesheet" href="../../index.css">
     </head>
     <body id="body">
-        <div class="body" style="border: none">
-            <p class="bold">О данном сайте</p>
-            <p class="offset d b">Добро пожаловать на сайт проекта Program Helpers, тут ты можешь узнать правила этого проекта, его администраторов и прочее</p>
+
+        <div class="vignette" id="vignette"></div>
+
+        <div class="menu" menubtn onclick="menu()" id="divmenusel">
+            <img src="./assets/up-arrow.svg" class="arrow">
+            <img src="./assets/up-arrow.svg" class="arrow">
+            <img src="./assets/up-arrow.svg" class="arrow">
+        </div>
     
-            <p class="bold">Структура</p>
-            <p class="offset d b">В общем в этой группе, все русскоязычные, тут выкладываются хорошие модули для Magisk которые тебе могут помочь, а также бывает выкладывают программы интересные и так далее..</p>
-    
-            <p class="bold">Ссылки</p>
-            <p class="offset d b">В Телеграм: <a href="https://t.me/rnhelperschat/" target="_blank">Группа</a> - <a href="https://t.me/rnhelper/" target="_blank">Канал</a></p>
-            <p class="bold">Правила</p>
-    
+        <div id="divmenu" closed>
+            <div class="cent centt bigmenubtn">
+                <a href="https://t.me/rnhelper" target="_blank"><button class="menu left leftt">Прошиваловы</button></a>
+                <a href="https://t.me/rnhelper/445" target="_blank"><button class="menu thinmenubtn left leftt">Полезный пост</button></a>
+                <p class="offset"></p>
+                <a href="https://t.me/rn10smm" target="_blank"><button class="menu left leftt" >Создатель</button></a>
+                <a href="/zadonit na pivo" target="_blank"><button class="menu thinmenubtn left leftt">задонить на пиво</button></a>
+            </div>
+            <p class="offset b"></p>
+            <p class="bold cent centt offset d">Правила Канала</p>
+
             <p class="medium">1 Пользователи</p>
             <p>1.0 Спам / Мут 5 часов</p>
             <p>1.1 Флуд / Мут 1 час</p>
@@ -45,15 +54,82 @@
             <p class="medium offset d l">Напишите главному администратору, если вы хотите подать аппеляцию в сторону неправильного наказания.</p>
     
             <p class="medium offset d b">Если вам что-то не понятно, или имеются вопросы, не стесняйтесь обращаться к администраторам проекта.</p>
-    
-            <p class="bold">Примечание</p>
+            <p class="bold cent centt offset d">Примечание</p>
             <p class="offset d b">Всегда скидывайте доказательства в личные сообщения администраторам проекта, что-бы они её рассмотрели и приняли вынесение наказания.</p>
+        </div>
+
+        <div class="body" style="border: none">
+            <p class="bold">О данном сайте</p>
+            <p class="offset d b">Добро пожаловать на сайт проекта Program Helpers, тут ты можешь узнать правила этого проекта, его администраторов и прочее</p>
+    
+            <p class="bold">Структура</p>
+            <p class="offset d b">В общем в этой группе, все русскоязычные, тут выкладываются хорошие модули для Magisk которые тебе могут помочь, а также бывает выкладывают программы интересные и так далее..</p>
+    
+            <p class="bold">Ссылки</p>
+            <p class="offset d b">В Телеграм: <a href="https://t.me/rnhelperschat/" target="_blank">Группа</a> - <a href="https://t.me/rnhelper/" target="_blank">Канал</a></p>
     
             <p class="bold">Администраторы</p>
-            <p class="offset d b"><a href="https://t.me/Acelotick" target="_blank">Acelotick</a>, <a href="https://t.me/m3m4ik1376" target="_blank">M3m4ik1376</a>, <a href="https://t.me/UnD3ath" target="_blank">UnD3ath</a></p>
+            <p class="offset d b"><a href="https://t.me/Acelotick" target="_blank">Acelotick</a>, <a href="https://t.me/m3m4ik1376" target="_blank">M3m4ik1376</a>, <a href="https://t.me/UnD3ath" target="_blank">UnD3ath</a>, <a href="https://t.me/pocof5prohypee" target="_blank">Quincy</a></p>
     
             <p class="bold">Главный Администратор</p>
             <p>Написать: <a href="https://t.me/rn10smm" target="_blank">Данил</a></p>
         </div>
+
+        <script>
+            let anypageopened = false
+            /*func*/let id = id => document.getElementById(id);
+            /*menu*/
+            let time=0;
+            let menu=()=>{
+                if(anypageopened||time>Date.now())return;
+                time=Date.now()+850;
+                if(id('divmenu').hasAttribute('closed'))id('divmenu').removeAttribute('closed');
+                id('vignette').toggleAttribute('used');
+                id('divmenu').toggleAttribute('opened');
+                id('divmenusel').toggleAttribute('anim')
+            };
+            let close_menu=()=>{
+                id('divmenu').removeAttribute('opened');
+                id('divmenusel').removeAttribute('anim')
+                id('vignette').removeAttribute('used');
+            };
+            /*menus*/
+            let menuopened=0;
+            let detail=name=>{
+                if(menuopened>Date.now())return;
+                menuopened=Date.now()+285;
+                let idi=`detail${name}`;
+                if(anypageopened||time>Date.now())return;
+                time=Date.now()+285;
+                if(id(idi).hasAttribute('closed'))id(idi).removeAttribute('closed');
+                id('vignette').toggleAttribute('used');
+                id(idi).toggleAttribute('opened');
+                anypageopened=true;
+                let det=id(`detail${name}`);
+                det.style.display='block';
+                det.style.opacity=1;};
+                let details=document.getElementsByClassName('detail');
+                let close_details=()=>{
+                    for(el of details){
+                        el.removeAttribute('opened');
+                    };
+                    id('vignette').removeAttribute('used');
+                    anypageopened=false;
+                }
+            /*trigger closing*/
+            document.addEventListener('click',(ev=>{
+                let success=false;
+                for(el of details){
+                    if(el.contains(ev.target))success=true;
+                };
+                if(!success)close_details();
+                if(!id('divmenu').contains(ev.target)){
+                    for (let el of document.querySelectorAll('[menubtn]')) {
+                        if (el.contains(ev.target)) return
+                    }
+                    close_menu();
+                }
+            }));
+        </script>
     </body>
 </html>

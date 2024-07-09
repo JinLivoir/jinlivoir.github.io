@@ -251,13 +251,14 @@ div.detail {
     z-index: 6;
     margin: 10px;
     width: calc(100% - 25px);
-    border: 2px solid;
+    border: none;
+    outline: none;
     height: calc(100% - 25px);
 }
 
 iframe.detailframe {
     border-radius: 18px 17px 17px 18px;
-    border: 2px solid #000;
+    border: 2px solid #c9c9c9;
     margin: 0;
     padding: 0;
 }
@@ -301,7 +302,7 @@ button.menu {
     border: none;
     font-size: 21px;
     margin: 6px;
-    width: 100%;
+    width: 98%;
     padding: 8px;
     border-radius: 7px;
     border: 1px solid #fff2;
@@ -317,28 +318,34 @@ button.menu:active {
     background: #0005;
 }
 
+button.menu.thinmenubtn {
+    height: 28px;
+    font-size: 18px;
+    padding: 0;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    margin-top: 2px;
+}
+
 .vignette {
     width: 100%;
     height: 100%;
-    background: #0005;
+    background: #000;
     position: fixed;
-    z-index: 5;
+    z-index: 6;
     transition: all .9s ease-in-out;
     pointer-events: none;
     opacity: 0;
 }
 
-.vignette[used] {
-    opacity: 1;
-}
+.vignette[used] { opacity: 1 }
 
-.left {
-    justify-content: left;
-}
-
-.leftt {
-    text-align: left;
-}
+.left { justify-content: left }
+.leftt { text-align: left }
+.cent { justify-content: center }
+.centt { text-align: center }
+.right { justify-content: right }
+.rightt { text-align: right }
 
 #divmenu {
     position: fixed;
@@ -347,8 +354,6 @@ button.menu:active {
     transition: all .9s ease-in;
     overflow-y: scroll;
     z-index: 6;
-    justify-content: center;
-    text-align: center;
     width: 98%;
     margin: auto;
     padding: 1.1%;
@@ -385,9 +390,9 @@ div.menu {
     display: flex;
     height: 22px;
     background: #454545;
+    position: fixed;
     text-align: center;
     justify-content: center;
-    position: fixed;
     z-index: 6;
     width: 90%;
     left: 5%;
@@ -422,13 +427,6 @@ details:not([open]) { animation: details-slideback .3s ease-in-out }
 @keyframes details-slide { 0% { opacity: 0; transform: translate(0, -3px) } 100% { opacity: 1; transform: translate(0, 0) } }
 @keyframes details-slideback { 0% { opacity: 0; transform: translate(0, 3px) } 100% { opacity: 1; transform: translate(0, 0) } }
 
-@media (orientation: landscape) {
-    #divmenu {
-        direction: rtl;
-        unicode-bidi: bidi-override;
-    }
-}
-
 @media (orientation: portrait) {
     button.menu {
         text-align: center;
@@ -439,6 +437,10 @@ details:not([open]) { animation: details-slideback .3s ease-in-out }
         width: 250px;
         border-radius: 6px;
     }
+}
+
+div.bigmenubtn button.menu {
+    width: 98%
 }
 
 @media (prefers-color-scheme: light) {
