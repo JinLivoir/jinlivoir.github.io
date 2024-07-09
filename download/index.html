@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Начало загрузки</title>
+
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
     <div class="body">
-        <p class="bold">Загрузка</p>
-        <p>Через <a class="counter"></a> будет скачан файл <a class="file"></a></p>
-        <p>Если загрузка не началась автоматически, то нажмите <button class="download">Скачать</button></p>
+        <p>Загрузка начинается..</p>
+        <p>Файл <a id="file"></a> будет скачан через <a id="counter"></a></p>
+        <p>Описание: <a id="desc"></a></p>
     </div>
     <script>
         let download = file => {
-            id('downloading').textContent = 'В данный момент началось скачивание.';
+            id('downloading').textContent = ``;
             let a = document.createElement('a');
             a.href = './files/' + file;
             a.download = file;
@@ -29,20 +31,20 @@
         let id = id => document.getElementById(id);
     
         id('counter').textContent = counter;
-        id('desc').textContent = s[2];
+        id('desc').textContent = decodeURIComponent(s[2]);
         id('file').textContent = s[1];
         id('lenk').href = s[3]
     
         let time = setInterval(() => {
-            if (counter < 0.1) {
+            if (counter < 0.01) {
                 clearInterval(time);
                 return download(s[1]);
             };
     
-            counter -= 0.1;
+            counter -= 0.01;
     
-            id('counter').textContent = counter;
-        }, 100);
+            id('counter').textContent = counter.toFixed(2);
+        }, 10);
     
         let try_ = () => {
             if (counter < 0.1) download(s[1]);

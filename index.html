@@ -23,7 +23,7 @@
 
     <noscript>
         <style>
-            .body { display: none }
+            .body, .detail { display: none }
             .error { color: #efa08f }
             .errortext { color: #f4cbcb }
         </style>
@@ -41,44 +41,46 @@
         </div>
     </noscript>
 
-    <img class="menu" id="menubtn" onclick="menu()">
-
-    <div id="divmenu" closed>
-        <p class="bold offset d">Меню</p>
-        <button class="menu" onclick="page(1)">Начальная страница</button>
-        <p class="offset l"></p>
-        <button class="menu" onclick="page(2)">Magisk</button>
-        <button class="menu" onclick="page(3)">Утилиты</button>
-        <p class="offset b"></p>
-        <button class="menu" onclick="page(4)">Обои для ПК</button>
-        <button class="menu" onclick="page(5)">Wallpaper Engine</button>
-        <button class="menu" onclick="page(6)">Обои для телефона</button>
-        <button class="menu" onclick="page(7)">Персонализация</button>
+    <div class="menu" menubtn onclick="menu()" id="divmenusel">
+        <img src="./assets/up-arrow.svg" class="arrow up">
+        <img src="./assets/up-arrow.svg" class="arrow up">
+        <img src="./assets/up-arrow.svg" class="arrow up">
     </div>
 
-    <div class="space"></div>
+    <div id="divmenu" closed>
+        <p class="offset l"></p>
+        <p class="bold offset d left leftt">Меню</p>
+        <button class="menu leftt" onclick="page(1)">Начальная страница</button>
+        <p class="offset l"></p>
+        <button class="menu leftt" onclick="page(2)">Magisk</button>
+        <button class="menu leftt" onclick="page(3)">Утилиты</button>
+        <p class="offset b"></p>
+        <button class="menu leftt" onclick="page(4)">Обои для ПК</button>
+        <button class="menu leftt" onclick="page(5)">Wallpaper Engine</button>
+        <button class="menu leftt" onclick="page(6)">Обои для телефона</button>
+        <button class="menu leftt" onclick="page(7)">Персонализация</button>
+    </div>
 
     <div class="vignette" id="vignette"></div>
 
     <div class="detail" id="detailtest" closed>
         <img class="detail" onclick="close_details()">
-        <div class="detailiframecont">
-            <iframe class="detailframe" src="./pages/proshiv/index.html" frameborder="0" width="100%" height="100%" style="src: url('/index.css');"></iframe>
-        </div>
+        <iframe class="detailframe" src="./pages/proshiv/index.html" frameborder="0" width="100%" height="100%" style="src: url('/index.css');"></iframe>
     </div>
 
     <div class="body page" id="page1">
         <p class="bold">Привет</p>
         <p class="offset d b">Тут ты можешь найти что тебе нужно по твоей теме, просто нажми на меню и переходи куда захочешь.</p>
 
-        <p class="bold">Кто такой JinLiovir</p>
+        <p class="bold">Кто такой JinLivoir</p>
         <p class="offset d b">Это пользователь, Виталий, начинающий программист который сделал этот сайт без посторонней помощи, или другого.</p>
 
         <p class="bold">Переходы</p>
-        <p class="offset d b"><a href="https://t.me/acelotick" target="_blank">Мой Телеграм</a> и <a href="https://vk.com/vitaliikarpov" target="_blank">Мой ВКонтакте</a></p>
+        <p class="offset d b"><a href="https://t.me/acelotick" target="_blank">Мой Телеграм</a> и <a href="https://vk.com/vitalikarpov" target="_blank">Мой ВКонтакте</a></p>
         
         <p class="bold">Спонсоры</p>
         <p>Данил: <a href="https://t.me/rn10smm" target="_blank"><button class="download detail">Телеграм</button></a> <button class="download detail" onclick="detail('test')">Сайт в окне</button> <a href="./pages/proshiv/index.html"><button class="download detail">Сайт</button></a></p>
+        <p class="offset l"><a id="fun-fact" onclick="gen()">Нажмите что-бы сгенерировать забавный факт.</a></p>
     </div>
 
     <div class="body page" id="page2">
@@ -94,7 +96,34 @@
     </div>
 
     <div class="body page" id="page5">
-        wallpaper engine
+        <p class="bold">Оглавление</p>
+        <p class="offset d b">Привет, тут ты найдешь проекты для Wallpaper Engine с обоями на любой вкус.</p>
+
+        <p class="bold">Что такое Wallpaper Engine?</p>
+        <p class="offset d b">Это утилита, которая помогает устанавливать живые или статичные обои, это приложение можно купить в стиме или скачать с неофициального сайта без вирусов смс и регистрации.</p>
+
+        <p class="bold">Группа Аниме</p>
+        <p class="offset d l"></p>
+        <div class="picturecont">
+          <img src="./assets/we/wall3.png" alt="Wallpaper" class="picture" onclick="d('/we/wall3.zip')">
+          <img src="./assets/we/wall4.png" alt="Wallpaper" class="picture" onclick="d('/we/wall4.zip')">
+          <img src="./assets/we/wall5.png" alt="Wallpaper" class="picture" onclick="d('/we/wall5.zip')">
+          <img src="./assets/we/wall6.png" alt="Wallpaper" class="picture" onclick="d('/we/wall6.zip')">
+          <img src="./assets/we/wall8.png" alt="Wallpaper" class="picture" onclick="d('/we/wall8.zip')">
+        </div>
+
+        <p class="bold offset b">Группа Цифровые часы</p>
+        <p class="offset d l"></p>
+        <div class="picturecont">
+            <img src="./assets/we/wall1.png" alt="Wallpaper" class="picture" onclick="d('/we/wall1.zip')">
+            <img src="./assets/we/wall2.png" alt="Wallpaper" class="picture" onclick="d('/we/wall2.zip')">
+        </div>
+
+        <p class="bold offset b">Группа Необычные</p>
+        <p class="offset d l"></p>
+        <div class="picturecont">
+            <img src="./assets/we/wall7.png" alt="Wallpaper" class="picture" onclick="d('/we/wall7.zip')">
+        </div>
     </div>
 
     <div class="body page" id="page6">
@@ -106,6 +135,104 @@
     </div>
 
     <script>
+        let facts = [
+            "В Австралии существует больше овец, чем людей.",
+            "Человеческий нос может запомнить до 50,000 различных запахов.",
+            "Страусы могут бегать быстрее, чем лошади.",
+            "Медведи коалы спят около 22 часов в день.",
+            "Сердце креветки находится в её голове.",
+            "Пчелы никогда не спят.",
+            "Осьминоги имеют три сердца.",
+            "В Японии больше домашних животных, чем детей.",
+            "Коты не могут чувствовать сладкий вкус.",
+            "Космонавты на МКС видят восход и закат 16 раз в день.",
+            "У акулы больше костей в её коже, чем в скелете.",
+            "Кенгуру не умеют ходить назад.",
+            "Зебры - дальтоники.",
+            "Пингвины не умеют летать, но они отличные пловцы.",
+            "В Китае есть 56 различных этнических групп.",
+            "Каждый день 20 тысяч человек имеют день рождения.",
+            "На Юпитере и Сатурне идут дожди из алмазов.",
+            "Самый старый из известных золотых рыбок прожил 43 года.",
+            "Улитка может спать до трех лет.",
+            "Человеческое тело содержит примерно 100 тысяч километров кровеносных сосудов.",
+            "Пингвины предлагают камни своим партнерам в знак любви.",
+            "Медузы существуют более 650 миллионов лет.",
+            "Шоколад был использован в качестве валюты у ацтеков.",
+            "У коров есть лучшие друзья, и они становятся беспокойными, когда их разделяют.",
+            "Перо страуса весит больше, чем его мозг.",
+            "Утконос откладывает яйца, но кормит детенышей молоком.",
+            "В Италии есть фонтан, из которого течет красное вино.",
+            "Клещи могут жить до 18 лет.",
+            "На Марсе закаты кажутся синими из-за его атмосферы.",
+            "Бананы радиоактивны из-за содержания калия.",
+            "Каждую секунду молния ударяет землю около 100 раз.",
+            "Слово 'сельдерей' происходит от греческого слова, означающего 'петрушка'.",
+            "Панды едят сидя, как люди.",
+            "Мозг человека примерно на 75% состоит из воды.",
+            "Коровы могут подниматься по лестнице, но не могут спускаться.",
+            "У осьминогов нет костей, поэтому они могут пролезть через очень узкие отверстия.",
+            "Древние египтяне использовали крокодиловый навоз в качестве контрацептива.",
+            "В Древнем Риме люди чистили зубы мочой.",
+            "Земля вращается со скоростью около 1670 километров в час.",
+            "Коровы производят больше молока, когда слушают музыку.",
+            "Реки на Титане (спутник Сатурна) текут метаном, а не водой.",
+            "Сом может 'гулять' по суше, используя свои плавники как ноги.",
+            "В Германии есть сауна в виде аэропланов.",
+            "Самка гориллы может родить только одного детеныша раз в четыре года.",
+            "Существуют рыбы, которые могут летать.",
+            "В Саудовской Аравии нет ни одной реки.",
+            "Каждый человек в среднем за свою жизнь производит около 25,000 литров слюны.",
+            "У звезд морских ежей есть глаза на кончиках своих щупалец.",
+            "Страусы могут жить до 75 лет.",
+            "Существуют грибы, которые светятся в темноте.",
+            "Гепарды могут разгоняться до 112 км/ч в течение нескольких секунд.",
+            "Единственное животное, которое может видеть ультрафиолетовый свет, это пчела.",
+            "Морские звезды могут отрастить свои конечности.",
+            "У кенгуру нет возможности двигаться назад.",
+            "Слоны - единственные животные, которые не могут прыгать.",
+            "Пингвины могут подпрыгивать до 2 метров в воздухе.",
+            "Медведи панды родом из Китая, на самом деле, не являются настоящими пандами.",
+            "Самка кенгуру может иметь до трех детенышей одновременно.",
+            "Жирафы могут пройти без воды дольше, чем верблюды.",
+            "Дельфины спят с одним открытым глазом.",
+            "В небе над Бразилией обитают муравьи, которые выращивают грибы.",
+            "Осьминоги имеют три сердца.",
+            "Гусеницы имеют 12 мускульных ног.",
+            "Лошади могут спать, стоя.",
+            "У домашних кошек есть более 100 различных звуковых сигналов.",
+            "Петухи кукарекают утром, чтобы объявить своё присутствие.",
+            "Медведи могут обонять еду на расстоянии до 32 км.",
+            "Муравьи стали земляными инженерами. Вот уже 55 миллионов лет их конструкции неизменны.",
+            "Для воспитания птенцов жирафы никогда не ложатся.",
+            "Жирафы не могут оборачивать голову из-за длинной шеи.",
+            "Наука знает больше 6000 языков."
+        ];
+        
+        let n = 0
+        let d = 0;
+        
+        let gen = () => {
+            let fact = document.getElementById('fun-fact');
+            if (n == 0 && n < 5) {
+                fact.textContent = 'Забавный факт загружается..';
+                setTimeout(() => {
+                    fact.textContent = facts[Number((Math.random() * facts.length).toFixed(0))] ?? 'Ошибка при генерации, тебе повезло!';
+                    d++;
+                }, Math.random() * 1000);
+                n++;
+            } else if (n > 5 && n <= 8) {
+                fact.textContent = 'Перестаньте кликать на меня!';
+            } else if (n > 8 && n <= 10) {
+                fact.textContent = 'Так и быть, я сдаюсь!';
+            } else if (n > 10) {
+                fact.style.display = 'none';
+            };
+            if (d) n++;
+        };
+
+        //[---] ---
+
         let pages = [
             {
                 '1': 'main',
@@ -119,12 +246,83 @@
         ]
 
         /*func*/let id = id => document.getElementById(id);
-        /*menus*/let anypageopened = false
-        /*menu*/let time=0;let menu=()=>{if(anypageopened||time>Date.now())return;time=Date.now()+850;if(id('divmenu').hasAttribute('closed'))id('divmenu').removeAttribute('closed');id('vignette').toggleAttribute('used');id('divmenu').toggleAttribute('opened');};let close_menu=()=>{id('divmenu').removeAttribute('opened');id('vignette').removeAttribute('used');};
-        /*pages*/let lastpage='page1';let pagetime=0;let page=num=>{if(anypageopened||lastpage==`page${num}`||pagetime>Date.now())return;pagetime=Date.now+600;let now=id(`page${num}`);now.style.display='block';now.style.opacity='1';let last=id(lastpage);last.style.opacity='0';setTimeout(()=>{last.style.display='none'},600);lastpage=`page${num}`;close_menu();}
-        /*menus*/let menuopened=0;let detail=name=>{if(menuopened>Date.now())return;menuopened=Date.now()+285;let idi=`detail${name}`;if(anypageopened||time>Date.now())return;time=Date.now()+285;if(id(idi).hasAttribute('closed'))id(idi).removeAttribute('closed');id('vignette').toggleAttribute('used');id(idi).toggleAttribute('opened');anypageopened=true;let det=id(`detail${name}`);det.style.display='block';det.style.opacity=1;};let details=document.getElementsByClassName('detail');let close_details=()=>{for(el of details){el.removeAttribute('opened');};id('vignette').removeAttribute('used');anypageopened=false;}
-        /*forwarding*/if(!document.location.search.split('?')[1])document.location.href='?main';let r=document.location.search.split('?')[1];for(d in pages[0]){pages[1][pages[0][d]]=d};if(r in pages[1])page(pages[1][r]);
-        /*trigger closing*/document.addEventListener('click',(ev=>{let success=false;for(el of details){if(el.contains(ev.target))success=true;};if(!success)close_details();if(!id('divmenu').contains(ev.target)&&!id('menubtn').contains(ev.target)){close_menu();}}));
+        
+        /*menus*/
+        let anypageopened = false
+        /*menu*/
+        let time=0;
+        let menu=()=>{
+            if(anypageopened||time>Date.now())return;
+            time=Date.now()+850;
+            if(id('divmenu').hasAttribute('closed'))id('divmenu').removeAttribute('closed');
+            id('vignette').toggleAttribute('used');
+            id('divmenu').toggleAttribute('opened');
+            id('divmenusel').toggleAttribute('anim')
+        };
+        let close_menu=()=>{
+            id('divmenu').removeAttribute('opened');
+            id('divmenusel').removeAttribute('anim')
+            id('vignette').removeAttribute('used');
+        };
+        /*pages*/
+        let lastpage='page1';
+        let pagetime=0;
+        let page=num=>{
+            if(anypageopened||lastpage==`page${num}`||pagetime>Date.now())return;
+            pagetime=Date.now+600;let now=id(`page${num}`);
+            now.style.display='block';
+            now.style.opacity='1';
+            let last=id(lastpage);
+            last.style.opacity='0';
+            setTimeout(()=>{
+                last.style.display='none'},600);
+                lastpage=`page${num}`;
+                close_menu();
+            }
+        /*menus*/
+        let menuopened=0;
+        let detail=name=>{
+            if(menuopened>Date.now())return;
+            menuopened=Date.now()+285;
+            let idi=`detail${name}`;
+            if(anypageopened||time>Date.now())return;
+            time=Date.now()+285;
+            if(id(idi).hasAttribute('closed'))id(idi).removeAttribute('closed');
+            id('vignette').toggleAttribute('used');
+            id(idi).toggleAttribute('opened');
+            anypageopened=true;
+            let det=id(`detail${name}`);
+            det.style.display='block';
+            det.style.opacity=1;};
+            let details=document.getElementsByClassName('detail');
+            let close_details=()=>{
+                for(el of details){
+                    el.removeAttribute('opened');
+                };
+                id('vignette').removeAttribute('used');
+                anypageopened=false;
+            }
+        /*forwarding*/
+        if(!document.location.search.split('?')[1])document.location.href='?main';
+        let r=document.location.search.split('?')[1];
+        for(d in pages[0]){
+            pages[1][pages[0][d]]=d
+        };
+        if(r in pages[1])page(pages[1][r]);
+        /*trigger closing*/
+        document.addEventListener('click',(ev=>{
+            let success=false;
+            for(el of details){
+                if(el.contains(ev.target))success=true;
+            };
+            if(!success)close_details();
+            if(!id('divmenu').contains(ev.target)){
+                for (let el of document.querySelectorAll('[menubtn]')) {
+                    if (el.contains(ev.target)) return
+                }
+                close_menu();
+            }
+        }));
     </script>
 </body>
 </html>
