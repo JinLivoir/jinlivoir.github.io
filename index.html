@@ -20,13 +20,8 @@
 </head>
 <body>
     <p class="dummy">JinLivoir<div class="dummy">Jin Livoir</div><div class="dummy">Jinlivoir</div></p>
-
     <noscript>
-        <style>
-            .body, .detail { display: none }
-            .error { color: #efa08f }
-            .errortext { color: #f4cbcb }
-        </style>
+        <style>.body, .detail { display: none } .error { color: #efa08f } .errortext { color: #f4cbcb }</style>
         <div class="noscript">
             <p class="bold error">Ошибка!</p>
             <p class="offset d b errortext">Похоже, что-бы просматривать данную страницу вам нужно включить JavaScript в браузере!</p>
@@ -40,28 +35,26 @@
             </div>
         </div>
     </noscript>
-
-    <div class="menu" menubtn onclick="menu()" id="divmenusel">
-        <img src="./assets/up-arrow.svg" class="arrow up">
-        <img src="./assets/up-arrow.svg" class="arrow up">
-        <img src="./assets/up-arrow.svg" class="arrow up">
-    </div>
-
+    <div class="widthwarn body">У вас слишком маленькая ширина экрана для просмотра данной страницы, перейдите в горизонтальный режим или используйте другой устройство.</div>
+    <div class="menu" menubtn closed onclick="menu()" id="divmenusel"><div class="arrow">❯</div><div class="arrow">❯</div><div class="arrow">❯</div></div>
     <div id="divmenu" closed>
         <p class="offset l"></p>
-        <p class="bold offset d left leftt">Меню</p>
-        <button class="menu leftt" onclick="page(1)">Начальная страница</button>
-        <p class="offset l"></p>
-        <button class="menu leftt" onclick="page(2)">Magisk</button>
-        <button class="menu leftt" onclick="page(3)">Утилиты</button>
-        <p class="offset b"></p>
-        <button class="menu leftt" onclick="page(4)">Обои для ПК</button>
-        <button class="menu leftt" onclick="page(5)">Wallpaper Engine</button>
-        <button class="menu leftt" onclick="page(6)">Обои для телефона</button>
-        <button class="menu leftt" onclick="page(7)">Персонализация</button>
+        <div class="cent centt">
+            <p class="bold offset d">Меню</p>
+            <button class="menu" onclick="page(1)">Начальная страница</button>
+            <p class="offset l"></p>
+            <button class="menu" onclick="page(2)">Magisk</button>
+            <button class="menu" onclick="page(3)">Утилиты</button>
+            <p class="offset b"></p>
+            <button class="menu" onclick="page(4)">Обои для ПК</button>
+            <button class="menu" onclick="page(5)">Wallpaper Engine</button>
+            <button class="menu" onclick="page(6)">Обои для телефона</button>
+            <button class="menu" onclick="page(7)">Персонализация</button>
+            <button class="menu" onclick="window.location.href = 'https://www.donationalerts.com/r/acelotick'">Поддержать</button>
+        </div>
     </div>
 
-    <div class="vignette" id="vignette">sex</div>
+    <div class="vignette" id="vignette"></div>
 
     <div class="detail" id="detailtest" closed>
         <img class="detail" onclick="close_details()">
@@ -255,14 +248,15 @@
             if(anypageopened||time>Date.now())return;
             time=Date.now()+850;
             if(id('divmenu').hasAttribute('closed'))id('divmenu').removeAttribute('closed');
+            
+            if(id('divmenusel').hasAttribute('closed'))id('divmenusel').removeAttribute('closed');
             id('vignette').toggleAttribute('used');
             id('divmenu').toggleAttribute('opened');
-            id('divmenusel').toggleAttribute('anim')
+            id('divmenusel').toggleAttribute('anim');
         };
         let close_menu=()=>{
             id('divmenu').removeAttribute('opened');
             id('divmenusel').removeAttribute('anim')
-            id('vignette').removeAttribute('used');
         };
         /*pages*/
         let lastpage='page1';
